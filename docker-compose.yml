@@ -1,0 +1,52 @@
+services:
+  postgres:
+    container_name: postgres-container
+    image: postgres:latest
+    mem_limit: 700m
+    environment:
+      POSTGRES_PASSWORD: 123456
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      dev:
+        ipv4_address: 172.20.0.10
+    restart: no
+
+  redis:
+    container_name: redis-container
+    image: redis/redis-stack-server:latest
+    environment:
+      REDIS_ARGS: "--requirepass 123456"
+    ports:
+      - "6379:6379"
+    networks:
+      dev:
+        ipv4_address: 172.20.0.11
+    restart: no
+
+  rabbitmq:
+    container_name: rabbitmq-container
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: 123456
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      dev:
+        ipv4_address: 172.20.0.12
+    restart: no
+
+volumes:
+  postgres:
+
+networks:
+  dev:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
