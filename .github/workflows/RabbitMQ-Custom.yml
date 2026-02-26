@@ -55,13 +55,14 @@ jobs:
         run: |
           set -euo pipefail
           TAG="${{ steps.upstream.outputs.latest_tag }}"
+          REPO="${{ env.IMAGE_REPO }}"
 
-          if curl -fsSL "https://hub.docker.com/v2/repositories/${{ env.IMAGE_REPO }}/tags/${TAG}" >/dev/null 2>&1; then
+          if curl -fsSL "https://hub.docker.com/v2/repositories/${REPO}/tags/${TAG}" >/dev/null 2>&1; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
-            echo "${IMAGE_REPO}:${TAG} already exists on Docker Hub. Skip."
+            echo "${REPO}:${TAG} already exists on Docker Hub. Skip."
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
-            echo "${IMAGE_REPO}:${TAG} not found. Will build & push."
+            echo "${REPO}:${TAG} not found. Will build & push."
           fi
 
       - name: Resolve delayed plugin asset URL (GitHub releases)
@@ -123,8 +124,8 @@ jobs:
         if: steps.exists.outputs.exists != 'true'
         uses: docker/build-push-action@v6
         with:
-          context: ./docker/RABBITMQ_TAG
-          file: ./docker/RABBITMQ_TAG/Dockerfile
+          context: ./docker/RabbitMQ
+          file: ./docker/RabbitMQ/Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
           build-args: |
