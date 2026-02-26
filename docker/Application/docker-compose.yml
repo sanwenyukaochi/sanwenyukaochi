@@ -1,0 +1,46 @@
+name: application-docker
+services:
+  postgres:
+    container_name: postgres-container
+    image: postgres
+    mem_limit: 700m
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: PASSWORD
+      POSTGRES_DB: postgres
+      TZ: Asia/Shanghai
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    network_mode: "host"
+    restart: no
+    logging:
+      driver: "none"
+
+  redis:
+    container_name: redis-container
+    image: redis/redis-stack-server
+    environment:
+      REDIS_ARGS: "--requirepass PASSWORD --ignore-warnings ARM64-COW-BUG"
+    network_mode: "host"
+    restart: no
+    logging:
+      driver: "none"
+
+  rabbitmq:
+    container_name: rabbitmq-container
+    image: rabbitmq:management
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: PASSWORD
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    network_mode: "host"
+    restart: no
+    logging:
+      driver: "none"
+
+volumes:
+  postgres-data:
+    name: postgres-data
+  rabbitmq-data:
+    name: rabbitmq-data

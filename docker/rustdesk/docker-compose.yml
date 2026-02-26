@@ -1,0 +1,25 @@
+name: common-docker
+services:
+  rustDesk-server:
+    container_name: RustDesk-server
+    image: rustdesk/rustdesk-server:latest
+    command: hbbs
+    volumes:
+      - rustDesk-data:/root
+    network_mode: "host"
+    depends_on:
+      - rustDesk-relay
+    restart: unless-stopped
+
+  rustDesk-relay:
+    container_name: RustDesk-relay
+    image: rustdesk/rustdesk-server:latest
+    command: hbbr
+    volumes:
+      - rustDesk-data:/root
+    network_mode: "host"
+    restart: unless-stopped
+
+volumes:
+  rustDesk-data:
+    name: rustDesk-data
