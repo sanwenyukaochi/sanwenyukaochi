@@ -2,13 +2,11 @@ name: RabbitMQ Custom (management + delayed plugin)
 
 on:
   schedule:
-    - cron: "0 16 * * 0"
+    - cron: "0 0 * * 0"
   workflow_dispatch: {}
 
 env:
-  # 你的 Docker Hub 仓库名（示例：yourname/rabbitmq-delayed）
-  IMAGE_REPO: ${{ secrets.DOCKERHUB_USERNAME }}/rabbitmq-delayed
-  # 只跟踪官方的 “x.y.z-management” 这种 tag
+  IMAGE_REPO: ${{ secrets.DOCKERHUB_USERNAME }}/rabbitmq-custom
   UPSTREAM_REPO: library/rabbitmq
 
 jobs:
