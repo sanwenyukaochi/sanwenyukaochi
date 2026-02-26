@@ -1,0 +1,137 @@
+name: RabbitMQ Custom (management + delayed plugin)
+
+on:
+  schedule:
+    - cron: "0 16 * * 0"
+  workflow_dispatch: {}
+
+env:
+  # 你的 Docker Hub 仓库名（示例：yourname/rabbitmq-delayed）
+  IMAGE_REPO: ${{ secrets.DOCKERHUB_USERNAME }}/rabbitmq-delayed
+  # 只跟踪官方的 “x.y.z-management” 这种 tag
+  UPSTREAM_REPO: library/rabbitmq
+
+jobs:
+  check-build-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Detect latest upstream RabbitMQ management tag
+        id: upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          TAGS_JSON="$(curl -fsSL "https://hub.docker.com/v2/repositories/${UPSTREAM_REPO}/tags?page_size=100")"
+          LATEST_TAG="$(echo "$TAGS_JSON" \
+            | jq -r '.results[].name' \
+            | grep -E '^[0-9]+\.[0-9]+\.[0-9]+-management$' \
+            | sort -V \
+            | tail -n 1)"
+
+          if [[ -z "${LATEST_TAG}" ]]; then
+            echo "Failed to detect latest upstream -management tag"
+            exit 1
+          fi
+
+          echo "latest_tag=${LATEST_TAG}" >> "$GITHUB_OUTPUT"
+          echo "Latest upstream tag: ${LATEST_TAG}"
+
+          MAJOR_MINOR="$(echo "${LATEST_TAG}" | sed -E 's/^([0-9]+\.[0-9]+)\..*$/\1/')"
+          echo "major_minor=${MAJOR_MINOR}" >> "$GITHUB_OUTPUT"
+          echo "major_minor=${MAJOR_MINOR}"
+
+      - name: Check if Docker Hub already has this tag
+        id: exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="${{ steps.upstream.outputs.latest_tag }}"
+
+          if curl -fsSL "https://hub.docker.com/v2/repositories/${{ env.IMAGE_REPO }}/tags/${TAG}" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "${IMAGE_REPO}:${TAG} already exists on Docker Hub. Skip."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "${IMAGE_REPO}:${TAG} not found. Will build & push."
+          fi
+
+      - name: Resolve delayed plugin asset URL (GitHub releases)
+        id: plugin
+        if: steps.exists.outputs.exists != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          MM="${{ steps.upstream.outputs.major_minor }}"  # e.g. 4.2
+          echo "Target RabbitMQ major.minor = ${MM}"
+
+          RELEASES_JSON="$(curl -fsSL "https://api.github.com/repos/rabbitmq/rabbitmq-delayed-message-exchange/releases?per_page=100")"
+
+          PLUGIN_TAG="$(echo "$RELEASES_JSON" \
+            | jq -r '.[].tag_name' \
+            | grep -E "^v${MM}\.[0-9]+$" \
+            | sed 's/^v//' \
+            | sort -V \
+            | tail -n 1)"
+
+          if [[ -z "${PLUGIN_TAG}" ]]; then
+            echo "No delayed plugin release found for ${MM}.x"
+            exit 1
+          fi
+
+          echo "Picked delayed plugin version: ${PLUGIN_TAG}"
+
+          DELAYED_URL="$(echo "$RELEASES_JSON" \
+            | jq -r ".[] | select(.tag_name==\"v${PLUGIN_TAG}\") | .assets[].browser_download_url" \
+            | grep -E '\.ez$' \
+            | head -n 1)"
+
+          if [[ -z "${DELAYED_URL}" ]]; then
+            echo "Failed to resolve .ez asset url for v${PLUGIN_TAG}"
+            exit 1
+          fi
+
+          echo "delayed_url=${DELAYED_URL}" >> "$GITHUB_OUTPUT"
+          echo "plugin_version=${PLUGIN_TAG}" >> "$GITHUB_OUTPUT"
+          echo "delayed_url=${DELAYED_URL}"
+
+      - name: Set up QEMU
+        if: steps.exists.outputs.exists != 'true'
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        if: steps.exists.outputs.exists != 'true'
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        if: steps.exists.outputs.exists != 'true'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build & Push (multi-arch)
+        if: steps.exists.outputs.exists != 'true'
+        uses: docker/build-push-action@v6
+        with:
+          context: ./docker/RABBITMQ_TAG
+          file: ./docker/RABBITMQ_TAG/Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            RABBITMQ_TAG=${{ steps.upstream.outputs.latest_tag }}
+            DELAYED_PLUGIN_URL=${{ steps.plugin.outputs.delayed_url }}
+          tags: |
+            ${{ env.IMAGE_REPO }}:${{ steps.upstream.outputs.latest_tag }}
+            ${{ env.IMAGE_REPO }}:latest
