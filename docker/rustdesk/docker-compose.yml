@@ -4,21 +4,45 @@ services:
     container_name: RustDesk-server
     image: rustdesk/rustdesk-server:latest
     command: hbbs
+    mem_limit: 150m
     volumes:
       - rustDesk-data:/root
     network_mode: "host"
     depends_on:
       - rustDesk-relay
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "hbbs", "-h"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
 
   rustDesk-relay:
     container_name: RustDesk-relay
     image: rustdesk/rustdesk-server:latest
     command: hbbr
+    mem_limit: 150m
     volumes:
       - rustDesk-data:/root
     network_mode: "host"
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "hbbr", "-h"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
 
 volumes:
   rustDesk-data:
