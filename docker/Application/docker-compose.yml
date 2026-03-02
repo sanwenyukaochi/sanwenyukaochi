@@ -6,47 +6,85 @@ services:
     mem_limit: 700m
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: PASSWORD
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: postgres
       TZ: Asia/Shanghai
-    volumes:
-      - postgres-data:/var/lib/postgresql
+    volumes: [ postgres-data:/var/lib/postgresql ]
     network_mode: "host"
-    restart: no
+    restart: "no"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d postgres -h 127.0.0.1 -p 5432" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
     logging:
-      driver: "none"
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
 
   redis:
     container_name: redis-container
     image: redis/redis-stack-server
+    mem_limit: 700m
     environment:
-      REDIS_ARGS: "--requirepass PASSWORD --ignore-warnings ARM64-COW-BUG"
+      TZ: Asia/Shanghai
+    command: [ "redis-server", "--requirepass", "${REDIS_PASSWORD}", "--ignore-warnings", "ARM64-COW-BUG" ]
     network_mode: "host"
-    restart: no
+    restart: "no"
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli -a ${REDIS_PASSWORD} ping | grep PONG" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
     logging:
-      driver: "none"
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
 
   rabbitmq:
     container_name: rabbitmq-container
     image: rabbitmq:management
+    mem_limit: 700m
     environment:
       RABBITMQ_DEFAULT_USER: admin
-      RABBITMQ_DEFAULT_PASS: PASSWORD
-    volumes:
-      - rabbitmq-data:/var/lib/rabbitmq
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+      TZ: Asia/Shanghai
+    volumes: [ rabbitmq-data:/var/lib/rabbitmq ]
     network_mode: "host"
-    restart: no
+    restart: "no"
+    healthcheck:
+      test: [ "CMD-SHELL", "rabbitmq-diagnostics -q ping" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
     logging:
-      driver: "none"
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
 
   cloudflare-d:
     container_name: cloudflare-d
     image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run --token TOKEN
+    mem_limit: 200m
+    environment:
+      TZ: Asia/Shanghai
+    command: [ "tunnel", "--no-autoupdate", "--metrics", "0.0.0.0:2000", "run", "--token", "${CF_TUNNEL_TOKEN}" ]
     network_mode: "host"
-    restart: unless-stopped
+    restart: "unless-stopped"
+    healthcheck:
+      test: [ "CMD", "cloudflared", "version" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
     logging:
-      driver: "none"
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
 
 volumes:
   postgres-data:
