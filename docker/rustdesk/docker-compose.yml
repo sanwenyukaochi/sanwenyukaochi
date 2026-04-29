@@ -1,15 +1,15 @@
-name: common-docker
+name: RustDesk
 services:
-  rustDesk-server:
-    container_name: RustDesk-server
+  RustDesk-Server:
+    container_name: rustdesk-server
     image: rustdesk/rustdesk-server:latest
     command: hbbs
     mem_limit: 150m
     volumes:
-      - rustDesk-data:/root
+      - rustdesk-data:/root
     network_mode: "host"
     depends_on:
-      - rustDesk-relay
+      - RustDesk-Relay
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "hbbs", "-h"]
@@ -23,13 +23,13 @@ services:
         max-size: "2m"
         max-file: "2"
 
-  rustDesk-relay:
-    container_name: RustDesk-relay
+  RustDesk-Relay:
+    container_name: rustdesk-relay
     image: rustdesk/rustdesk-server:latest
     command: hbbr
     mem_limit: 150m
     volumes:
-      - rustDesk-data:/root
+      - rustdesk-data:/root
     network_mode: "host"
     restart: unless-stopped
     healthcheck:
@@ -45,5 +45,5 @@ services:
         max-file: "2"
 
 volumes:
-  rustDesk-data:
-    name: rustDesk-data
+  rustdesk-data:
+    name: rustdesk-data
