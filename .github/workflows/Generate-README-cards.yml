@@ -5,56 +5,78 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   generate:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
       - uses: actions/checkout@v4
-        # 生成 stats-card.svg
+
+      # 生成 stats-card.svg
       - name: Generate stats card
         uses: Pranesh-2005/github-readme-stats-fast-action@v1
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true
+          options: |
+            {
+              "username": "${{ github.repository_owner }}",
+              "show_icons": true
+            }
           path: dist/cards/stats-card.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-        # 生成 top-languages-card.svg
+      # 生成 top-languages-card.svg
       - name: Generate top languages card
         uses: Pranesh-2005/github-readme-stats-fast-action@v1
         with:
           card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&langs_count=6
+          options: |
+            {
+              "username": "${{ github.repository_owner }}",
+              "layout": "compact",
+              "langs_count": 6
+            }
           path: dist/cards/top-languages-card.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-        # 生成 streak-card.svg
+      # 生成 streak-card.svg
       - name: Generate streak card
         uses: Pranesh-2005/github-readme-stats-fast-action@v1
         with:
           card: streak
-          options: username=${{ github.repository_owner }}&layout=compact
+          options: |
+            {
+              "username": "${{ github.repository_owner }}",
+              "layout": "compact"
+            }
           path: dist/cards/streak-card.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-        # 生成 pin-card.svg
+      # 生成 pin-card.svg
       - name: Generate pin card
         uses: Pranesh-2005/github-readme-stats-fast-action@v1
         with:
           card: pin
-          options: username=${{ github.repository_owner }}&repo=${{ github.repository_owner }}
+          options: |
+            {
+              "username": "${{ github.repository_owner }}",
+              "repo": "${{ github.event.repository.name }}"
+            }
           path: dist/cards/pin-card.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-        # 推送 素材 到 output 分支
+      # 推送素材到 output 分支
       - name: Push cards to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output/readme-cards
           build_dir: dist
+          commit_message: "Update GitHub stats cards [skip ci]"
+          committer: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

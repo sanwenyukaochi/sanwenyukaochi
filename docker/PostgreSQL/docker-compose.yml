@@ -1,0 +1,29 @@
+name: PostgreSQL
+services:
+  PostgreSQL:
+    container_name: postgres
+    image: postgres:latest
+    mem_limit: 700m
+    env_file: [ env/postgres.env ]
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: postgres
+      TZ: Asia/Shanghai
+    volumes: [ postgres-data:/var/lib/postgresql ]
+    network_mode: "host"
+    restart: "no"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d postgres -h 127.0.0.1 -p 5432" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
+
+volumes:
+  postgres-data:
+    name: postgres-data

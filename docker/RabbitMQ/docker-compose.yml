@@ -1,0 +1,28 @@
+name: RabbitMQ
+services:
+  RabbitMQ:
+    container_name: rabbitmq
+    image: rabbitmq:management
+    mem_limit: 700m
+    env_file: [ env/rabbitmq.env ]
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+      TZ: Asia/Shanghai
+    volumes: [ rabbitmq-data:/var/lib/rabbitmq ]
+    network_mode: "host"
+    restart: "no"
+    healthcheck:
+      test: [ "CMD-SHELL", "rabbitmq-diagnostics -q ping" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
+
+volumes:
+  rabbitmq-data:
+    name: rabbitmq-data
