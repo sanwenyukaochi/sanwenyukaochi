@@ -1,0 +1,22 @@
+name: Redis
+services:
+  Redis:
+    container_name: redis
+    image: redis/redis-stack-server:latest
+    mem_limit: 700m
+    env_file: [ env/redis.env ]
+    environment:
+      TZ: Asia/Shanghai
+    command: [ "redis-server", "--requirepass", "${REDIS_PASSWORD}", "--ignore-warnings", "ARM64-COW-BUG" ]
+    network_mode: "host"
+    restart: "no"
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli -a ${REDIS_PASSWORD} ping | grep PONG" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"

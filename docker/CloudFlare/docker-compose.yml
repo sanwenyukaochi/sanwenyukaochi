@@ -1,9 +1,10 @@
-name: cloudflare-d-docker
+name: CloudFlare
 services:
-  cloudflare-d:
+  CloudFlare:
     container_name: cloudflare-d
     image: cloudflare/cloudflared:latest
     mem_limit: 200m
+    env_file: [ env/cloudflare.env ]
     environment:
       TZ: Asia/Shanghai
     command: [ "tunnel", "--no-autoupdate", "--metrics", "0.0.0.0:2000", "run", "--token", "${CF_TUNNEL_TOKEN}" ]
