@@ -1,0 +1,22 @@
+name: cloudflare-d-docker
+services:
+  cloudflare-d:
+    container_name: cloudflare-d
+    image: cloudflare/cloudflared:latest
+    mem_limit: 200m
+    environment:
+      TZ: Asia/Shanghai
+    command: [ "tunnel", "--no-autoupdate", "--metrics", "0.0.0.0:2000", "run", "--token", "${CF_TUNNEL_TOKEN}" ]
+    network_mode: "host"
+    restart: "unless-stopped"
+    healthcheck:
+      test: [ "CMD", "cloudflared", "version" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
