@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel PUBLIC "+//IDN python.org//DTD XML Bookmark Exchange Language 1.0//EN//XML" "http://pyxml.sourceforge.net/topics/dtds/xbel.dtd">
+<xbel version="1.0">
+<!--- highestId :7: for Floccus bookmark sync browser extension -->
+
+<folder id="1">
+  <title>Bookmarks Bar</title>
+  <bookmark href="https://www.udemy.com/" id="3">
+    <title>Udemy</title>
+  </bookmark>
+  <bookmark href="https://vtuber-style-logos.vercel.app/" id="4">
+    <title>VTuberized Logos</title>
+  </bookmark>
+  <bookmark href="https://www.sivalabs.in/blog/" id="5">
+    <title>SivaLabs --- SivaLabs</title>
+  </bookmark>
+  <bookmark href="https://www.baeldung.com/members/" id="6">
+    <title>Baeldung Pro Baeldung Membership</title>
+  </bookmark>
+  <bookmark href="https://docs.embabel.com/embabel-agent/guide/0.4.0-SNAPSHOT/" id="7">
+    <title>Embabel Agent Framework User Guide</title>
+  </bookmark>
+</folder>
+<folder id="2">
+  <title>Other Bookmarks</title>
+</folder>
+</xbel>
