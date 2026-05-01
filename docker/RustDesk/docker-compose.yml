@@ -1,13 +1,13 @@
 name: RustDesk
+
 services:
   RustDesk-Server:
     container_name: rustdesk-server
     image: rustdesk/rustdesk-server:latest
     command: hbbs
     mem_limit: 150m
-    volumes:
-      - rustdesk-data:/root
-    network_mode: "host"
+    volumes: [ RustDesk-Data:/root ]
+    network_mode: host
     depends_on:
       - RustDesk-Relay
     restart: unless-stopped
@@ -28,9 +28,8 @@ services:
     image: rustdesk/rustdesk-server:latest
     command: hbbr
     mem_limit: 150m
-    volumes:
-      - rustdesk-data:/root
-    network_mode: "host"
+    volumes: [ RustDesk-Data:/root ]
+    network_mode: host
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "hbbr", "-h"]
@@ -45,5 +44,5 @@ services:
         max-file: "2"
 
 volumes:
-  rustdesk-data:
-    name: rustdesk-data
+  RustDesk-Data:
+    name: RustDesk-Data
