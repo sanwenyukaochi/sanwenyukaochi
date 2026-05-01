@@ -1,4 +1,5 @@
 name: CloudFlare
+
 services:
   CloudFlare:
     container_name: cloudflare-d
@@ -7,9 +8,9 @@ services:
     env_file: [ env/cloudflare.env ]
     environment:
       TZ: Asia/Shanghai
-    command: [ "tunnel", "--no-autoupdate", "--metrics", "0.0.0.0:2000", "run", "--token", "${CF_TUNNEL_TOKEN}" ]
-    network_mode: "host"
-    restart: "unless-stopped"
+    command: [ "tunnel", "run" ]
+    network_mode: host
+    restart: unless-stopped
     healthcheck:
       test: [ "CMD", "cloudflared", "version" ]
       interval: 10s

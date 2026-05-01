@@ -1,4 +1,5 @@
 name: Redis
+
 services:
   Redis:
     container_name: redis
@@ -7,14 +8,14 @@ services:
     env_file: [ env/redis.env ]
     environment:
       TZ: Asia/Shanghai
-    command: [ "redis-server", "--requirepass", "${REDIS_PASSWORD}", "--ignore-warnings", "ARM64-COW-BUG" ]
-    network_mode: "host"
-    restart: "no"
+    network_mode: host
+    restart: no
     healthcheck:
-      test: [ "CMD-SHELL", "redis-cli -a ${REDIS_PASSWORD} ping | grep PONG" ]
+      test: [ "CMD-SHELL", "REDISCLI_AUTH=$$REDIS_PASSWORD redis-cli ping | grep PONG" ]
       interval: 10s
       timeout: 10s
       retries: 3
+      start_period: 10s
     logging:
       driver: "json-file"
       options:
