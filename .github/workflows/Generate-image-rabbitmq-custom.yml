@@ -1,4 +1,4 @@
-name: RabbitMQ Custom Image
+name: Generate image rabbitmq custom
 
 on:
   schedule:
