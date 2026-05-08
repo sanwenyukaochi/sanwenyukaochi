@@ -1,0 +1,22 @@
+name: RedisInsight
+
+services:
+  RedisInsight:
+    container_name: redisinsight
+    image: redis/redisinsight:latest
+    mem_limit: 300m
+    environment:
+      TZ: Asia/Shanghai
+    network_mode: host
+    restart: no
+    healthcheck:
+      test: [ "CMD-SHELL", "nc -z 127.0.0.1 5540 || exit 1" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
