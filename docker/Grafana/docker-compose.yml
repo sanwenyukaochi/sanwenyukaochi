@@ -1,0 +1,23 @@
+name: Grafana
+
+services:
+  Grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    mem_limit: 200m
+    env_file: [ env/grafana.env ]
+    environment:
+      TZ: Asia/Shanghai
+    network_mode: host
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
