@@ -9,7 +9,9 @@ services:
     environment:
       TZ: Asia/Shanghai
     command: [ "tunnel", "run" ]
-    network_mode: host
+    network_mode: bridge
+    ports:
+      - "20241:20241/tcp"
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "cloudflared", "version" ]
