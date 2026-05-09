@@ -1,0 +1,28 @@
+name: WireGuard
+
+services:
+  WireGuard:
+    container_name: wireguard
+    image: lscr.io/linuxserver/wireguard:latest
+    mem_limit: 256m
+    env_file: [ env/wireguard.env ]
+    volumes: [ WireGuard-Data:/config ]
+    network_mode: bridge
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "wg show || exit 1" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
+
+volumes:
+  WireGuard-Data:
+    name: WireGuard-Data
