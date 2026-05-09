@@ -8,6 +8,8 @@ services:
     env_file: [ env/wireguard.env ]
     volumes: [ WireGuard-Data:/config ]
     network_mode: bridge
+    ports:
+      - "51820:51820/udp"
     cap_add:
       - NET_ADMIN
     restart: unless-stopped

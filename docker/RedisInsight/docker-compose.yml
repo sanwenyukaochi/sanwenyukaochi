@@ -7,7 +7,9 @@ services:
     mem_limit: 300m
     environment:
       TZ: Asia/Shanghai
-    network_mode: host
+    network_mode: bridge
+    ports:
+      - "5540:5540/tcp"
     restart: no
     healthcheck:
       test: [ "CMD-SHELL", "nc -z 127.0.0.1 5540 || exit 1" ]

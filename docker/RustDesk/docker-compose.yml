@@ -7,7 +7,13 @@ services:
     command: hbbs
     mem_limit: 150m
     volumes: [ RustDesk-Data:/root ]
-    network_mode: host
+    network_mode: bridge
+    ports:
+      - "21114:21114/tcp"
+      - "21115:21115/tcp"
+      - "21116:21116/tcp"
+      - "21116:21116/udp"
+      - "21118:21118/tcp"
     depends_on:
       - RustDesk-Relay
     restart: unless-stopped
@@ -29,7 +35,10 @@ services:
     command: hbbr
     mem_limit: 150m
     volumes: [ RustDesk-Data:/root ]
-    network_mode: host
+    network_mode: bridge
+    ports:
+      - "21117:21117/tcp"
+      - "21119:21119/tcp"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "hbbr", "-h"]
