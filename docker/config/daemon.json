@@ -1,6 +1,17 @@
 {
   "registry-mirrors": [
+    "https://docker.1ms.run",
     "https://docker.m.daocloud.io",
+    "https://docker.nju.edu.cn",
+    "https://mirror.iscas.ac.cn",
+    "https://mirror.baidubce.com",
+    "https://docker.1panel.live",
+    "https://dockerproxy.com",
+    "https://dockerproxy.link",
+    "https://docker.rainbond.cc",
+    "https://docker.jiaxin.site",
+    "https://docker.imgdb.de",
+    "https://docker-0.unsee.tech",
     "https://docker.2x.nz"
   ]
 }
