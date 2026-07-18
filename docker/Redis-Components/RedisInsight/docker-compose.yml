@@ -2,7 +2,7 @@ name: RedisInsight
 
 services:
   RedisInsight:
-    container_name: redisinsight
+    container_name: redis-insight
     image: redis/redisinsight:latest
     mem_limit: 300m
     environment:
