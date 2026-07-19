@@ -1,0 +1,41 @@
+﻿name: Redis-Cluster
+
+services:
+  redis:
+    container_name: redis-cluster
+    image: redis/redis-stack-server:latest
+    mem_limit: 700m
+    env_file: [ env/redis.env ]
+    environment:
+      TZ: Asia/Shanghai
+    command:
+      - sh
+      - -c
+      - >-
+        redis-server
+        --bind 0.0.0.0
+        --protected-mode no
+        --port $$REDIS_PORT
+        --logfile ""
+        --cluster-enabled yes
+        --cluster-config-file /data/nodes.conf
+        --cluster-node-timeout 5000
+        --cluster-announce-ip $$CLUSTER_ANNOUNCE_IP
+        --cluster-announce-port $$REDIS_PORT
+        --cluster-announce-bus-port $$REDIS_CLUSTER_BUS_PORT
+        --requirepass "$$REDIS_PASSWORD"
+        --masterauth "$$REDIS_PASSWORD"
+        --ignore-warnings ARM64-COW-BUG
+    network_mode: host
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli -a $$REDIS_PASSWORD -p $$REDIS_PORT ping | grep PONG" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
