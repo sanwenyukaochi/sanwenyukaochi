@@ -1,0 +1,20 @@
+name: ZeroTier-One
+
+services:
+  ZeroTier:
+    container_name: ZeroTier-One
+    image: zerotier/zerotier:latest
+    mem_limit: 200m
+    environment:
+      TZ: Asia/Shanghai
+    volumes: [ ZeroTierOne-Data:/var/lib/zerotier-one ]
+    network_mode: host
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+volumes:
+  ZeroTierOne-Data:
+    name: ZeroTierOne-Data
