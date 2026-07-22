@@ -1,0 +1,24 @@
+name: Excalidraw
+
+services:
+  excalidraw:
+    container_name: excalidraw
+    image: excalidraw/excalidraw:latest
+    mem_limit: 200m
+    environment:
+      TZ: Asia/Shanghai
+    network_mode: bridge
+    ports:
+      - "5000:80/tcp"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
