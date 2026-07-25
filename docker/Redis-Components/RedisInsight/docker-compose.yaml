@@ -12,7 +12,7 @@ services:
       - "5540:5540/tcp"
     restart: no
     healthcheck:
-      test: [ "CMD-SHELL", "nc -z 127.0.0.1 5540 || exit 1" ]
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 5540 || exit 1"]
       interval: 10s
       timeout: 10s
       retries: 3

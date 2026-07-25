@@ -5,7 +5,7 @@ services:
     container_name: redis-cluster
     image: redis/redis-stack-server:latest
     mem_limit: 700m
-    env_file: [ env/redis.env ]
+    env_file: [env/redis.env]
     environment:
       TZ: Asia/Shanghai
     command:
@@ -34,7 +34,7 @@ services:
     network_mode: host
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "redis-cli -a $$REDIS_PASSWORD -p $$REDIS_PORT ping | grep PONG" ]
+      test: ["CMD-SHELL", "redis-cli -a $$REDIS_PASSWORD -p $$REDIS_PORT ping | grep PONG"]
       interval: 10s
       timeout: 10s
       retries: 3

@@ -5,17 +5,17 @@ services:
     container_name: postgres
     image: postgres:latest
     mem_limit: 700m
-    env_file: [ env/postgres.env ]
+    env_file: [env/postgres.env]
     environment:
       POSTGRES_DB: postgres
       TZ: Asia/Shanghai
-    volumes: [ PostgreSQL-Data:/var/lib/postgresql ]
+    volumes: [PostgreSQL-Data:/var/lib/postgresql]
     network_mode: bridge
     ports:
       - "5432:5432/tcp"
     restart: no
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB -h 127.0.0.1 -p 5432" ]
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB -h 127.0.0.1 -p 5432"]
       interval: 10s
       timeout: 10s
       retries: 3

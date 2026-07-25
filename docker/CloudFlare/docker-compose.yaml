@@ -5,16 +5,16 @@ services:
     container_name: cloudflare-d
     image: cloudflare/cloudflared:latest
     mem_limit: 200m
-    env_file: [ env/cloudflare.env ]
+    env_file: [env/cloudflare.env]
     environment:
       TZ: Asia/Shanghai
-    command: [ "tunnel", "run" ]
+    command: ["tunnel", "run"]
     network_mode: bridge
     ports:
       - "20241:20241/tcp"
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "cloudflared", "version" ]
+      test: ["CMD", "cloudflared", "version"]
       interval: 10s
       timeout: 5s
       retries: 3
