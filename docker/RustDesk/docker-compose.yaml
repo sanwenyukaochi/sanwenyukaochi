@@ -6,7 +6,7 @@ services:
     image: rustdesk/rustdesk-server:latest
     command: hbbs
     mem_limit: 150m
-    volumes: [ RustDesk-Data:/root ]
+    volumes: [RustDesk-Data:/root]
     network_mode: bridge
     ports:
       - "21114:21114/tcp"
@@ -34,7 +34,7 @@ services:
     image: rustdesk/rustdesk-server:latest
     command: hbbr
     mem_limit: 150m
-    volumes: [ RustDesk-Data:/root ]
+    volumes: [RustDesk-Data:/root]
     network_mode: bridge
     ports:
       - "21117:21117/tcp"

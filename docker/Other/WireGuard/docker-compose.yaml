@@ -5,8 +5,8 @@ services:
     container_name: wireguard
     image: lscr.io/linuxserver/wireguard:latest
     mem_limit: 256m
-    env_file: [ env/wireguard.env ]
-    volumes: [ WireGuard-Data:/config ]
+    env_file: [env/wireguard.env]
+    volumes: [WireGuard-Data:/config]
     network_mode: bridge
     ports:
       - "51820:51820/udp"
@@ -14,7 +14,7 @@ services:
       - NET_ADMIN
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "wg show || exit 1" ]
+      test: ["CMD-SHELL", "wg show || exit 1"]
       interval: 10s
       timeout: 10s
       retries: 3
