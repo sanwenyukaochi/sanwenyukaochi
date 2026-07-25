@@ -35,6 +35,25 @@ allprojects {
                 toggleOffOn()
             }
 
+            yaml {
+                target("**/*.yaml")
+                prettier()
+                    .config(
+                        mapOf(
+                            "parser" to "yaml",
+                            "tabWidth" to 2,
+                            "useTabs" to false,
+                            "printWidth" to 120,
+                            "proseWrap" to "preserve",
+                            "singleQuote" to false,
+                            "bracketSpacing" to true,
+                        ),
+                    )
+                trimTrailingWhitespace()
+                endWithNewline()
+                toggleOffOn()
+            }
+
             kotlin {
                 target("**/*.kt")
                 ktlint()
