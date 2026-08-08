@@ -5,9 +5,12 @@ services:
     container_name: cloudflare-d
     image: cloudflare/cloudflared:latest
     mem_limit: 200m
-    env_file: [env/cloudflare.env]
     environment:
       TZ: Asia/Shanghai
+      TUNNEL_METRICS: ${TUNNEL_METRICS}
+      NO_AUTOUPDATE: ${NO_AUTOUPDATE}
+      TUNNEL_TRANSPORT_PROTOCOL: ${TUNNEL_TRANSPORT_PROTOCOL}
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
     command: ["tunnel", "run"]
     network_mode: bridge
     ports:
