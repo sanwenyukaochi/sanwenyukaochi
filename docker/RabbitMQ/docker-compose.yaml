@@ -5,9 +5,10 @@ services:
     container_name: RabbitMQ
     image: rabbitmq:management
     mem_limit: 700m
-    env_file: [env/rabbitmq.env]
     environment:
       TZ: Asia/Shanghai
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
     volumes: [RabbitMQ-Data:/var/lib/rabbitmq]
     network_mode: bridge
     ports:
