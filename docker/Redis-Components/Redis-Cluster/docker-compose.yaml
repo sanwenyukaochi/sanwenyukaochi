@@ -2,7 +2,7 @@
 
 services:
   redis:
-    container_name: redis-cluster
+    container_name: Redis-Cluster
     image: redis/redis-stack-server:latest
     mem_limit: 700m
     env_file: [env/redis.env]
