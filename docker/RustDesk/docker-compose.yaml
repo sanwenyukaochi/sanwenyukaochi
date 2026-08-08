@@ -2,7 +2,7 @@ name: RustDesk
 
 services:
   RustDesk-Server:
-    container_name: rustdesk-server
+    container_name: RustDesk-Server
     image: rustdesk/rustdesk-server:latest
     command: hbbs
     mem_limit: 150m
@@ -30,7 +30,7 @@ services:
         max-file: "2"
 
   RustDesk-Relay:
-    container_name: rustdesk-relay
+    container_name: RustDesk-Relay
     image: rustdesk/rustdesk-server:latest
     command: hbbr
     mem_limit: 150m

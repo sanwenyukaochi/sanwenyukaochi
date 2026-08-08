@@ -1,7 +1,7 @@
 name: ZeroTier-One
 
 services:
-  ZeroTier:
+  ZeroTierOne:
     container_name: ZeroTier-One
     image: zerotier/zerotier:latest
     mem_limit: 200m

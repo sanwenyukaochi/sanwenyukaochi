@@ -2,7 +2,7 @@ name: RabbitMQ
 
 services:
   RabbitMQ:
-    container_name: rabbitmq
+    container_name: RabbitMQ
     image: rabbitmq:management
     mem_limit: 700m
     env_file: [env/rabbitmq.env]
