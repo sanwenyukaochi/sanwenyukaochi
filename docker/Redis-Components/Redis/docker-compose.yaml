@@ -8,6 +8,9 @@ services:
     env_file: [env/redis.env]
     environment:
       TZ: Asia/Shanghai
+      REDIS_ARGS: >-
+        --requirepass ${REDIS_PASSWORD}
+        --ignore-warnings ARM64-COW-BUG
     network_mode: bridge
     ports:
       - "6379:6379/tcp"
