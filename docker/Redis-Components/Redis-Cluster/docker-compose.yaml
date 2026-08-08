@@ -8,6 +8,13 @@ services:
     env_file: [env/redis.env]
     environment:
       TZ: Asia/Shanghai
+      REDIS_ARGS: >-
+        --cluster-enabled yes
+        --cluster-announce-ip ${CLUSTER_ANNOUNCE_IP}
+        --cluster-announce-port ${REDIS_PORT}
+        --cluster-announce-bus-port ${REDIS_CLUSTER_BUS_PORT}
+        --requirepass ${REDIS_PASSWORD}
+        --ignore-warnings ARM64-COW-BUG
     network_mode: host
     restart: unless-stopped
     healthcheck:
