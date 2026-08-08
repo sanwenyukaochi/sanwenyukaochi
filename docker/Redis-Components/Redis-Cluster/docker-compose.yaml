@@ -3,7 +3,7 @@
 services:
   redis:
     container_name: Redis-Cluster
-    image: docker.m.daocloud.io/redis:latest
+    image: redis:latest
     mem_limit: 700m
     environment:
       TZ: Asia/Shanghai
