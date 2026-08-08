@@ -1,6 +1,8 @@
-# Redis Stack Cluster 部署速查
+# Redis Cluster 部署速查
 
 以下示例使用 3 个主节点，并手动完成节点清理、互相发现和 16384 个哈希槽的分配。
+
+Compose 使用官方 `redis:latest` 镜像。该镜像不识别 Redis Stack 的 `REDIS_ARGS`，因此 Redis 参数通过 `command: >-` 传入。命令必须以 `redis-server` 开头，以便官方入口脚本降权到 `redis` 用户；不要改成 `sh -c`。
 
 ## 1. 替换环境变量
 
