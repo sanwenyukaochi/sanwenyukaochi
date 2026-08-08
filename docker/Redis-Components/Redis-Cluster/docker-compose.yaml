@@ -3,10 +3,11 @@
 services:
   redis:
     container_name: Redis-Cluster
-    image: redis:latest
+    image: docker.m.daocloud.io/redis:latest
     mem_limit: 700m
     environment:
       TZ: Asia/Shanghai
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
     command: >-
       redis-server
       --cluster-enabled yes
