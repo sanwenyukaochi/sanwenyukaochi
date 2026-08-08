@@ -3,18 +3,19 @@
 services:
   redis:
     container_name: Redis-Cluster
-    image: redis/redis-stack-server:latest
+    image: redis:latest
     mem_limit: 700m
     environment:
       TZ: Asia/Shanghai
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
-      REDIS_ARGS: >-
-        --cluster-enabled yes
-        --cluster-announce-ip ${CLUSTER_ANNOUNCE_IP}
-        --cluster-announce-port ${REDIS_PORT}
-        --cluster-announce-bus-port ${REDIS_CLUSTER_BUS_PORT}
-        --requirepass ${REDIS_PASSWORD}
-        --ignore-warnings ARM64-COW-BUG
+    command: >-
+      redis-server
+      --cluster-enabled yes
+      --cluster-announce-ip "${CLUSTER_ANNOUNCE_IP}"
+      --cluster-announce-port "${REDIS_PORT}"
+      --cluster-announce-bus-port "${REDIS_CLUSTER_BUS_PORT}"
+      --requirepass "${REDIS_PASSWORD}"
+      --masterauth "${REDIS_PASSWORD}"
+      --ignore-warnings ARM64-COW-BUG
     network_mode: bridge
     ports:
       - "6379:6379/tcp"
