@@ -1,0 +1,31 @@
+name: PgAdmin
+
+services:
+  PgAdmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    mem_limit: 300m
+    environment:
+      TZ: Asia/Shanghai
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    volumes: [PgAdmin-Data:/var/lib/pgadmin]
+    network_mode: bridge
+    ports:
+      - "5050:80/tcp"
+    restart: no
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1/misc/ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
+
+volumes:
+  PgAdmin-Data:
+    name: PgAdmin-Data
