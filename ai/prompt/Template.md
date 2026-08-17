@@ -1,33 +1,34 @@
 ---
-title: "提示词名称"
-summary: "一句话说明这个提示词能做什么"
-category: "图片编辑"
-tags: []
+title: "" # Prompt Name, give the prompt a short, searchable name.
+summary: "" # A one-sentence description of what this prompt does, state its main purpose.
+category: "" # Use one broad category, such as image editing, writing, or coding.
+tags: [] # Add searchable keywords, such as ["food", "hand-drawn"].
+source: "" # Add the original URL, creator, platform, or "Original".
 ---
 
-# 提示词名称
+# Prompt Name
 
-## 使用说明
+## Usage
 
-- 适用场景：
-- 输入要求：需要提供哪些文字、图片、文件或背景信息。
-- 预期结果：
-- 注意事项：
+- Use case: Describe when and why to use this prompt.
+- Input requirements: List any required text, images, files, or context.
+- Expected result: Describe the expected output, format, or visual style.
+- Notes: Add any important limitations, replacement fields, or usage tips.
 
-## 原始提示词
+## Original Prompt
 
 ```text
-在这里粘贴最初收集到的提示词。
+Paste the originally collected prompt here.
 ```
 
-## 整理版提示词
+## Refined Prompt
 
 ```text
-在这里保存经过整理、可以直接使用的提示词。
+Place the refined, ready-to-use prompt here.
 ```
 
-## 快速复用版
+## Quick Version
 
 ```text
-在这里放精简提示词。
+Place a shorter version of the prompt here.
 ```
