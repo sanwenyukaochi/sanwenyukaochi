@@ -21,13 +21,13 @@ source: "" # Add the original URL, creator, platform, or "Original".
 Paste the originally collected prompt here.
 ```
 
-## Refined Prompt
+## Full Prompt
 
 ```text
-Place the refined, ready-to-use prompt here.
+Place the full, ready-to-use prompt here.
 ```
 
-## Quick Version
+## Short Prompt
 
 ```text
 Place a shorter version of the prompt here.
