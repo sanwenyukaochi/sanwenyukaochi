@@ -1,0 +1,18 @@
+name: DBX
+
+services:
+  DBX:
+    container_name: DBX
+    image: t8y2/dbx:latest
+    mem_limit: 200m
+    environment:
+      TZ: Asia/Shanghai
+    volumes: [DBX-Data:/app/data]
+    network_mode: bridge
+    ports:
+      - "4224:4224/tcp"
+    restart: unless-stopped
+
+volumes:
+  DBX-Data:
+    name: DBX-Data
