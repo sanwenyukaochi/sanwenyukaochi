@@ -5,7 +5,7 @@ services:
     container_name: wireguard
     image: lscr.io/linuxserver/wireguard:latest
     mem_limit: 256m
-    env_file: [env/wireguard.env]
+    env_file: [ env/wireguard.env ]
     volumes: [WireGuard-Data:/config]
     network_mode: bridge
     ports:
