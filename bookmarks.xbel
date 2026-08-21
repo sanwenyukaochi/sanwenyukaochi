@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel PUBLIC "+//IDN python.org//DTD XML Bookmark Exchange Language 1.0//EN//XML" "http://pyxml.sourceforge.net/topics/dtds/xbel.dtd">
 <xbel version="1.0">
-<!--- highestId :466: for Floccus bookmark sync browser extension -->
+<!--- highestId :467: for Floccus bookmark sync browser extension -->
 
 <folder id="1">
   <title>Bookmarks Bar</title>
@@ -956,6 +956,9 @@
       <title>PostgreSQL：文档</title>
     </bookmark>
   </folder>
+  <bookmark href="https://blog.csdn.net/A_art_xiang/article/details/125525864" id="467">
+    <title>redisson使用全解——redisson官方文档+注释（上篇）-CSDN博客</title>
+  </bookmark>
 </folder>
 <folder id="2">
   <title>Other Bookmarks</title>
