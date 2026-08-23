@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       # 生成 pacman-contribution-graph.svg
       - name: Generate pacman contribution graph
         uses: abozanona/pacman-contribution-graph@main
