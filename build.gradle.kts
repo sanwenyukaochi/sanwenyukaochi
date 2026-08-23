@@ -17,6 +17,7 @@ allprojects {
     pluginManager.withPlugin("com.diffplug.spotless") {
         extensions.configure<SpotlessExtension> {
             encoding("UTF-8")
+
             java {
                 target("**/*.java")
                 forbidWildcardImports()
