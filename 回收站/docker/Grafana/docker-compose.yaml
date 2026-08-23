@@ -5,7 +5,7 @@ services:
     container_name: grafana
     image: grafana/grafana:latest
     mem_limit: 200m
-    env_file: [ env/grafana.env ]
+    env_file: [env/grafana.env]
     environment:
       TZ: Asia/Shanghai
     network_mode: bridge
