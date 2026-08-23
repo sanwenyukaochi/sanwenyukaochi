@@ -4,7 +4,7 @@ services:
   DBX:
     container_name: DBX
     image: t8y2/dbx:latest
-    mem_limit: 200m
+    mem_limit: 128m
     environment:
       TZ: Asia/Shanghai
     volumes: [DBX-Data:/app/data]

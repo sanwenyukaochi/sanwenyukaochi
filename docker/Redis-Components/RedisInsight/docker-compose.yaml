@@ -4,7 +4,7 @@ services:
   RedisInsight:
     container_name: RedisInsight
     image: redis/redisinsight:latest
-    mem_limit: 300m
+    mem_limit: 256m
     environment:
       TZ: Asia/Shanghai
     network_mode: bridge

@@ -4,7 +4,7 @@ services:
   PostgreSQL:
     container_name: postgres
     image: postgres:latest
-    mem_limit: 700m
+    mem_limit: 512m
     environment:
       TZ: Asia/Shanghai
       POSTGRES_USER: ${POSTGRES_USER}

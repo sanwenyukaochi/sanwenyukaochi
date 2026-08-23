@@ -4,7 +4,7 @@ services:
   CloudFlare-Tunnel:
     container_name: CloudFlare-Tunnel
     image: cloudflare/cloudflared:latest
-    mem_limit: 200m
+    mem_limit: 128m
     environment:
       TZ: Asia/Shanghai
       TUNNEL_METRICS: ${TUNNEL_METRICS}
