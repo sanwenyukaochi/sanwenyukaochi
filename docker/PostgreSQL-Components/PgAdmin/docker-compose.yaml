@@ -4,7 +4,7 @@ services:
   PgAdmin:
     container_name: pgadmin
     image: dpage/pgadmin4:latest
-    mem_limit: 300m
+    mem_limit: 128m
     environment:
       TZ: Asia/Shanghai
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}

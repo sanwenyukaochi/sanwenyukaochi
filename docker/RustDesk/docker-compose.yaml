@@ -5,7 +5,7 @@ services:
     container_name: RustDesk-Server
     image: rustdesk/rustdesk-server:latest
     command: hbbs
-    mem_limit: 150m
+    mem_limit: 128m
     volumes: [RustDesk-Data:/root]
     network_mode: bridge
     ports:
@@ -33,7 +33,7 @@ services:
     container_name: RustDesk-Relay
     image: rustdesk/rustdesk-server:latest
     command: hbbr
-    mem_limit: 150m
+    mem_limit: 128m
     volumes: [RustDesk-Data:/root]
     network_mode: bridge
     ports:

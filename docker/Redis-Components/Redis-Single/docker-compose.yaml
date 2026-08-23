@@ -4,7 +4,7 @@ services:
   Redis:
     container_name: Redis
     image: redis:latest
-    mem_limit: 700m
+    mem_limit: 512m
     environment:
       TZ: Asia/Shanghai
       REDIS_PASSWORD: ${REDIS_PASSWORD}
