@@ -2,7 +2,7 @@ import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.spotless.java.GoogleJavaFormatStep
 
 plugins {
-    id("com.diffplug.spotless") version "8.10.0"
+    id("com.diffplug.spotless") version "8.10.1"
 }
 
 repositories {
