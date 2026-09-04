@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel PUBLIC "+//IDN python.org//DTD XML Bookmark Exchange Language 1.0//EN//XML" "http://pyxml.sourceforge.net/topics/dtds/xbel.dtd">
 <xbel version="1.0">
-<!--- highestId :467: for Floccus bookmark sync browser extension -->
+<!--- highestId :468: for Floccus bookmark sync browser extension -->
 
 <folder id="1">
   <title>Bookmarks Bar</title>
@@ -1220,5 +1220,8 @@
       </bookmark>
     </folder>
   </folder>
+  <bookmark href="https://nodecompass.com/" id="468">
+    <title>NodeCompass - 低端VPS的终极库存追踪器。我们全天候监控黑色星期五促销和闪电促销的补货情况。在NodeCompass上查找每年10美元的VPS套餐，并查看全球预算服务器节点的现存状态。</title>
+  </bookmark>
 </folder>
 </xbel>
