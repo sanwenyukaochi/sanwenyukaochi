@@ -2,7 +2,7 @@ name: PostgreSQL
 
 services:
   PostgreSQL:
-    container_name: postgres
+    container_name: PostgreSQL
     image: postgres:latest
     mem_limit: 512m
     environment:
