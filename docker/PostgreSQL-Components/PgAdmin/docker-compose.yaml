@@ -2,7 +2,7 @@ name: PgAdmin
 
 services:
   PgAdmin:
-    container_name: pgadmin
+    container_name: PgAdmin
     image: dpage/pgadmin4:latest
     mem_limit: 128m
     environment:
