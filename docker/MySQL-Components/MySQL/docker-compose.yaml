@@ -1,0 +1,31 @@
+name: MySQL
+
+services:
+  MySQL:
+    container_name: MySQL
+    image: mysql:latest
+    mem_limit: 512m
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes: [MySQL-Data:/var/lib/mysql]
+    network_mode: bridge
+    ports:
+      - "3306:3306/tcp"
+    restart: no
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -P 3306 -u root -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
+
+volumes:
+  MySQL-Data:
+    name: MySQL-Data
