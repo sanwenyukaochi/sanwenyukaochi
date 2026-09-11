@@ -1,4 +1,4 @@
-package CreationalDesignPatterns.Singleton;
+package creationalDesignPatterns.singleton;
 
 public class DemoMultiThread {
     public static void main(String[] args) {
