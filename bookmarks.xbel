@@ -932,9 +932,6 @@
   <bookmark href="https://start.jhipster.tech/" id="34">
     <title>JHipster Online</title>
   </bookmark>
-  <bookmark href="https://developer.aliyun.com/ask/700918" id="458">
-    <title>阿里云老用户上云省钱指南：阿里云2026年云产品专属活动详解_问答-阿里云开发者社区</title>
-  </bookmark>
   <folder id="459">
     <title>cucumber</title>
     <bookmark href="https://github.com/blumek/party-showcase" id="460">
@@ -958,6 +955,9 @@
   </folder>
   <bookmark href="https://blog.csdn.net/A_art_xiang/article/details/125525864" id="467">
     <title>redisson使用全解——redisson官方文档+注释（上篇）-CSDN博客</title>
+  </bookmark>
+  <bookmark href="https://refactoringguru.cn/" id="469">
+    <title>代码重构和设计模式</title>
   </bookmark>
 </folder>
 <folder id="2">
@@ -1222,9 +1222,6 @@
   </folder>
   <bookmark href="https://nodecompass.com/" id="468">
     <title>NodeCompass - 低端VPS的终极库存追踪器。我们全天候监控黑色星期五促销和闪电促销的补货情况。在NodeCompass上查找每年10美元的VPS套餐，并查看全球预算服务器节点的现存状态。</title>
-  </bookmark>
-  <bookmark href="https://refactoringguru.cn/" id="469">
-    <title>免费在线学习代码重构和设计模式</title>
   </bookmark>
 </folder>
 </xbel>
