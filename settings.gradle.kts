@@ -3,4 +3,4 @@ plugins {
 }
 rootProject.name = "sanwenyukaochi"
 
-include()
+include(":Design-Patterns:Java")
