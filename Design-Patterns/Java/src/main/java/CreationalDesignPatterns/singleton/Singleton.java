@@ -1,4 +1,4 @@
-package CreationalDesignPatterns.Singleton;
+package creationalDesignPatterns.singleton;
 
 public final class Singleton {
     // EN: The field must be declared volatile so that double check lock would
