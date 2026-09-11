@@ -42,7 +42,7 @@ public final class Singleton {
         if (result != null) {
             return result;
         }
-        synchronized(Singleton.class) {
+        synchronized (Singleton.class) {
             if (instance == null) {
                 instance = new Singleton(value);
             }
