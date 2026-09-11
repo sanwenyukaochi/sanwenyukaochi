@@ -3,5 +3,6 @@ plugins {
 }
 rootProject.name = "sanwenyukaochi"
 
+include(":Design-Patterns")
 include(":Design-Patterns:Java")
 include(":Design-Patterns:kotlin")
