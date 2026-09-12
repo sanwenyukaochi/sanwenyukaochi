@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel PUBLIC "+//IDN python.org//DTD XML Bookmark Exchange Language 1.0//EN//XML" "http://pyxml.sourceforge.net/topics/dtds/xbel.dtd">
 <xbel version="1.0">
-<!--- highestId :469: for Floccus bookmark sync browser extension -->
+<!--- highestId :470: for Floccus bookmark sync browser extension -->
 
 <folder id="1">
   <title>Bookmarks Bar</title>
@@ -958,6 +958,9 @@
   </bookmark>
   <bookmark href="https://refactoringguru.cn/" id="469">
     <title>代码重构和设计模式</title>
+  </bookmark>
+  <bookmark href="https://www.cnblogs.com/aquester/p/19791985" id="470">
+    <title>Harness Engineering 从零理解到动手实践 - 岚天逸见 - 博客园</title>
   </bookmark>
 </folder>
 <folder id="2">
