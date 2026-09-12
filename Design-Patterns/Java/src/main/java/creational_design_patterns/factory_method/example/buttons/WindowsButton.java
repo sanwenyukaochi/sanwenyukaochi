@@ -1,14 +1,21 @@
 package creational_design_patterns.factory_method.example.buttons;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  * EN: Windows button implementation.
  *
- * RU: Реализация нативных кнопок операционной системы.
+ * <p>RU: Реализация нативных кнопок операционной системы.
  */
 public class WindowsButton implements Button {
     JPanel panel = new JPanel();
@@ -35,11 +42,12 @@ public class WindowsButton implements Button {
 
     public void onClick() {
         button = new JButton("Exit");
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                System.exit(0);
-            }
-        });
+        button.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        frame.setVisible(false);
+                        System.exit(0);
+                    }
+                });
     }
 }
