@@ -27,7 +27,6 @@ allprojects {
                     .reflowLongStrings(false)
                     .formatJavadoc(true)
                     .reorderImports(true)
-                    .groupArtifact(GoogleJavaFormatStep.defaultGroupArtifact())
                 importOrder()
                 removeUnusedImports()
                 formatAnnotations()
