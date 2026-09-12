@@ -6,7 +6,7 @@ import creational_design_patterns.factory_method.example.buttons.HtmlButton;
 /**
  * EN: HTML Dialog will produce HTML buttons.
  *
- * RU: HTML-диалог.
+ * <p>RU: HTML-диалог.
  */
 public class HtmlDialog extends Dialog {
 
