@@ -1,4 +1,4 @@
-package creationalDesignPatterns.singleton;
+package creational_design_patterns.singleton.example.thread_safe;
 
 public class DemoMultiThread {
     public static void main(String[] args) {
