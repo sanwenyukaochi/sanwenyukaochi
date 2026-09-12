@@ -35,8 +35,8 @@
 
 <picture>
 <p>
-  <img height="240px" src="https://github-stats-extended.vercel.app/api?username=sanwenyukaochi&show=reviews%2Cdiscussions_started%2Cdiscussions_answered%2Cprs_merged%2Cprs_merged_percentage%2Cprs_commented%2Cprs_reviewed%2Cissues_commented&show_icons=true&include_all_commits=true&theme=onedark)](https://github-stats-extended.vercel.app/api?username=sanwenyukaochi&show=reviews%2Cdiscussions_started%2Cdiscussions_answered%2Cprs_merged%2Cprs_merged_percentage%2Cprs_commented%2Cprs_reviewed%2Cissues_commented&show_icons=true&include_all_commits=true&theme=onedark" alt=""/>
-  <img height="240px" src="https://github-stats-extended.vercel.app/api/top-langs?username=sanwenyukaochi&layout=compact&langs_count=6&theme=onedark)](https://github-stats-extended.vercel.app/api/top-langs?username=sanwenyukaochi&layout=compact&langs_count=6&theme=onedark" alt=""/>
+  <img height="240px" src="https://github-stats-extended.vercel.app/api?username=sanwenyukaochi&show=reviews%2Cdiscussions_started%2Cdiscussions_answered%2Cprs_merged%2Cprs_merged_percentage%2Cprs_commented%2Cprs_reviewed%2Cissues_commented&show_icons=true&include_all_commits=true&theme=onedark" alt=""/>
+  <img height="240px" src="https://github-stats-extended.vercel.app/api/top-langs?username=sanwenyukaochi&layout=compact&langs_count=6&theme=onedark" alt=""/>
 </p>
 </picture>
 
