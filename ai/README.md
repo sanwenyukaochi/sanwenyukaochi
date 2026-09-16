@@ -1,0 +1,3 @@
+| Platform | Author                                                | Project                                                                     | Description                                                                             |
+|----------|-------------------------------------------------------|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| GitHub   | [rrezartprebreza](https://github.com/rrezartprebreza) | [spring-boot-skills](https://github.com/rrezartprebreza/spring-boot-skills) | Spring Boot skills for Claude Code and Codex. Covers APIs, data, security, and testing. |
