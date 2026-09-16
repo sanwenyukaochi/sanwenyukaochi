@@ -51,9 +51,3 @@
 <div>
   <img src="https://capsule-render.vercel.app/api?type=waving&section=footer&height=120&color=0:cc2b5e,50:2193b0,100:6dd5ed" alt="footer"/>
 </div>
-
-```java
-void main() {
-    System.out.println("ABC");
-}
-```
