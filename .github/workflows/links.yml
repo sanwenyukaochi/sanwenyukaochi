@@ -21,6 +21,7 @@ jobs:
           args: >-
             --exclude '^https://discord\.gg/yourInviteCode'
             --exclude '^https://www\.java\.com/'
+            --exclude '^https://www\.linkedin\.com/in/sanwenyukaochi'
             .
           fail: false
 
