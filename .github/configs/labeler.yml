@@ -1,3 +1,14 @@
+# Branch pattern
+feature:
+  - head-branch: ['^feature/']
+fix:
+  - head-branch: ['^fix/']
+hotfix:
+  - head-branch: ['^hotfix/']
+release:
+  - head-branch: ['^release/']
+
+# Directory pattern
 documentation:
   - changed-files:
       - any-glob-to-any-file:
