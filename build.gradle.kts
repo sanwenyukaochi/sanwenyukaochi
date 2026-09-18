@@ -77,6 +77,7 @@ allprojects {
 
             json {
                 target("**/*.json")
+                targetExclude("**/.devcontainer/devcontainer.json")
                 gson()
                     .indentWithSpaces(4)
                     .sortByKeys()
