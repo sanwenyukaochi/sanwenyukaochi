@@ -1,8 +1,8 @@
-name: Redis
+name: Redis-Single
 
 services:
   Redis:
-    container_name: Redis
+    container_name: Redis-Single
     image: redis:latest
     mem_limit: 512m
     environment:
