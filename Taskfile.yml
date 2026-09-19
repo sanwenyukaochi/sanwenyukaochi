@@ -1,0 +1,42 @@
+version: "3"
+
+tasks:
+  build:
+    desc: Build the project
+    cmd:
+      - ./gradlew build
+
+  test:
+    desc: Run tests
+    cmds:
+      - ./gradlew test
+
+  format:
+    desc: Format source code
+    cmds:
+      - ./gradlew spotlessApply
+
+  check:
+    desc: Run project checks
+    cmds:
+      - ./gradlew check
+
+  dev:
+    desc: Start Spring Boot
+    cmds:
+      - ./gradlew bootRun
+
+  docker:build:
+    desc: Build Docker images
+    cmds:
+      - docker buildx bake
+
+  docker:up:
+    desc: Start infrastructure
+    cmds:
+      - docker compose up -d
+
+  docker:down:
+    desc: Stop infrastructure
+    cmds:
+      - docker compose down
