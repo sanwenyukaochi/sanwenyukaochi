@@ -3,7 +3,7 @@ name: Redis-Single
 services:
   Redis:
     container_name: Redis-Single
-    image: redis:8.10.0
+    image: redis:8.10.2
     mem_limit: 512m
     environment:
       TZ: Asia/Shanghai
