@@ -3,7 +3,7 @@ name: ZeroTier-One
 services:
   ZeroTierOne:
     container_name: ZeroTier-One
-    image: zerotier/zerotier:latest
+    image: zerotier/zerotier:1.14.2
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN

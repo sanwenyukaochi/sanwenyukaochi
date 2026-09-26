@@ -3,7 +3,7 @@ name: PgAdmin
 services:
   PgAdmin:
     container_name: PgAdmin
-    image: dpage/pgadmin4:latest
+    image: dpage/pgadmin4:9.18
     mem_limit: 128m
     environment:
       TZ: Asia/Shanghai

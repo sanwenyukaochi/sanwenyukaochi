@@ -3,7 +3,7 @@ name: RustDesk
 services:
   RustDesk-Server:
     container_name: RustDesk-Server
-    image: rustdesk/rustdesk-server:latest
+    image: rustdesk/rustdesk-server:1.1.16
     command: hbbs
     mem_limit: 128m
     volumes: [RustDesk-Data:/root]
