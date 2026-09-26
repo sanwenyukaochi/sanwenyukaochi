@@ -3,7 +3,7 @@ name: Redis-Insight
 services:
   RedisInsight:
     container_name: Redis-Insight
-    image: redis/redisinsight:latest
+    image: redis/redisinsight:3.8.0
     mem_limit: 256m
     environment:
       TZ: Asia/Shanghai

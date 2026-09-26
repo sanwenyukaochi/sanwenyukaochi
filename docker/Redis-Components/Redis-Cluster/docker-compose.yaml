@@ -3,7 +3,7 @@
 services:
   redis:
     container_name: Redis-Cluster
-    image: redis:latest
+    image: redis:8.10.2
     mem_limit: 512m
     environment:
       TZ: Asia/Shanghai
