@@ -3,7 +3,7 @@ name: CloudFlare-Tunnel
 services:
   CloudFlare-Tunnel:
     container_name: CloudFlare-Tunnel
-    image: cloudflare/cloudflared:2026.9.2
+    image: cloudflare/cloudflared:2026.9.3
     mem_limit: 128m
     environment:
       TZ: Asia/Shanghai
