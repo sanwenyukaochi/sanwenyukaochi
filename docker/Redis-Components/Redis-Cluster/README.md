@@ -135,6 +135,12 @@ redis-cli -c -h "$NODE_2_IP" -p "$REDIS_PORT" GET cluster:test
 unset REDISCLI_AUTH
 ```
 
+最后
+
+```shell
+redis-cli --cluster create 172.30.0.10:6379 172.30.0.20:6379 172.30.0.30:6379 --cluster-replicas 0
+```
+
 ## 注意事项
 
 - `CLUSTER MEET` 只负责让节点互相发现，不会自动分配哈希槽。
