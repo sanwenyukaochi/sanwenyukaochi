@@ -1,7 +1,7 @@
 ﻿name: Redis-Cluster
 
 services:
-  redis:
+  RedisCluster:
     container_name: Redis-Cluster
     image: redis:8.10.2
     mem_limit: 512m
