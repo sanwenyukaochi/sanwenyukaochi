@@ -1,0 +1,15 @@
+metadata:
+  version: "1.0"
+  last_updated: "2026-11-05"
+  os_support:
+    - macos
+    - linux
+
+development:
+  - name: Oh My Zsh
+    description: "A community-driven framework for managing your Zsh configuration, with hundreds of plugins and themes."
+    official_website: "https://ohmyz.sh/"
+
+  - name: Docker Desktop
+    description: "Your command center for container development, providing an easy-to-use environment for building and sharing containerized applications."
+    official_website: "https://www.docker.com/"
