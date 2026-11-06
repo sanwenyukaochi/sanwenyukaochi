@@ -31,7 +31,7 @@ services:
 
   RustDesk-Relay:
     container_name: RustDesk-Relay
-    image: rustdesk/rustdesk-server:latest
+    image: rustdesk/rustdesk-server:1.1.16
     command: hbbr
     mem_limit: 128m
     volumes: [RustDesk-Data:/root]
