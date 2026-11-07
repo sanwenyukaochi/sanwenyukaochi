@@ -1,0 +1,44 @@
+name: Bifrost
+
+services:
+  Bifrost:
+    container_name: Bifrost
+    image: maximhq/bifrost:v2.3.2
+    mem_limit: 64m
+
+    environment:
+      TZ: Asia/Shanghai
+      APP_HOST: 0.0.0.0
+      APP_PORT: 8080
+      LOG_LEVEL: info
+      LOG_STYLE: json
+
+      PG_HOST: ${PG_HOST}
+      PG_USER: ${PG_USER}
+      PG_PASSWORD: ${PG_PASSWORD}
+
+      BIFROST_ENCRYPTION_KEY: ${BIFROST_ENCRYPTION_KEY}
+
+    volumes:
+      - Bifrost-Data:/app/data
+      - ./data/config.json:/app/data/config.json:ro
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    network_mode: bridge
+
+    ports:
+      - "8080:8080/tcp"
+
+    restart: unless-stopped
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "2"
+
+volumes:
+  Bifrost-Data:
+    name: Bifrost-Data
