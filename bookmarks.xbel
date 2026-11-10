@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel PUBLIC "+//IDN python.org//DTD XML Bookmark Exchange Language 1.0//EN//XML" "http://pyxml.sourceforge.net/topics/dtds/xbel.dtd">
 <xbel version="1.0">
-<!--- highestId :477: for Floccus bookmark sync browser extension -->
+<!--- highestId :485: for Floccus bookmark sync browser extension -->
 
 <folder id="1">
   <title>Bookmarks Bar</title>
@@ -890,6 +890,78 @@
       <title>NVIDIA NIM APIs</title>
     </bookmark>
   </folder>
+  <folder id="478">
+    <title>Programming</title>
+    <folder id="479">
+      <title>Framework</title>
+      <folder id="472">
+        <title>Spring</title>
+        <bookmark href="https://spring-academy.broadcom.com/courses" id="473">
+          <title>Courses - Spring Academy</title>
+        </bookmark>
+        <bookmark href="https://www.yuque.com/geren-t8lyq/ncgl94/nn41bs3n8svmgpbq?singleDoc#dJSlZ" id="12">
+          <title>SpringAi GA1.0.0入门到源码完整系列课[wgc2]</title>
+        </bookmark>
+      </folder>
+      <folder id="459">
+        <title>Cucumber</title>
+        <bookmark href="https://github.com/blumek/party-showcase" id="460">
+          <title>blumek/party-showcase: Modular Spring Boot implementation of the Party archetype - isolated aggregate modules, Spring Data JDBC, Postgres, Cucumber e2e</title>
+        </bookmark>
+        <bookmark href="https://github.com/sncf-connect-tech/hesperides" id="461">
+          <title>sncf-connect-tech/hesperides: Configuration management tool providing universal text file templating and properties editing through a REST API or a webapp (backend part)</title>
+        </bookmark>
+        <bookmark href="https://github.com/codzy-ds/cucumber-demo" id="462">
+          <title>codzy-ds/cucumber-demo: Demo with cucumber, JUnit5, spring-boot and mavenon multi-module project</title>
+        </bookmark>
+        <bookmark href="https://github.com/VAbismael/my-multi-module-project" id="463">
+          <title>VAbismael/my-multi-module-project: projeto multi modulo em spring e cucumber aplicando arquitetura Hexagonal</title>
+        </bookmark>
+      </folder>
+    </folder>
+    <folder id="480">
+      <title>language</title>
+      <folder id="483">
+        <title>Kotlin</title>
+      </folder>
+      <folder id="484">
+        <title>JAVA</title>
+        <folder id="37">
+          <title>JAVA设计模式</title>
+          <bookmark href="https://blog.csdn.net/haiyan1989/article/details/148904615" id="432">
+            <title>Java 23种设计模式超全详解_java设计模式-CSDN博客</title>
+          </bookmark>
+          <bookmark href="https://www.bilibili.com/video/BV1tGqoBwEvg?spm_id_from=333.788.player.switch&amp;vd_source=d731492c6432906d6b8391f59356906e&amp;p=8" id="433">
+            <title>008-适配器模式_哔哩哔哩_bilibili</title>
+          </bookmark>
+        </folder>
+      </folder>
+      <bookmark href="https://openaidoc.org/" id="485">
+        <title>Open AIDoc</title>
+      </bookmark>
+    </folder>
+    <folder id="481">
+      <title>Database</title>
+      <folder id="465">
+        <title>postgresql</title>
+        <bookmark href="https://www.postgresql.org/docs/18/index.html" id="466">
+          <title>PostgreSQL：文档</title>
+        </bookmark>
+      </folder>
+    </folder>
+    <bookmark href="https://refactoringguru.cn/" id="475">
+      <title>代码重构和设计模式</title>
+    </bookmark>
+    <bookmark href="https://www.cnblogs.com/aquester/p/19791985" id="476">
+      <title>Harness Engineering 从零理解到动手实践 - 岚天逸见 - 博客园</title>
+    </bookmark>
+    <folder id="482">
+      <title>Middleware</title>
+      <bookmark href="https://blog.csdn.net/A_art_xiang/article/details/125525864" id="474">
+        <title>redisson使用全解——redisson官方文档+注释（上篇）-CSDN博客</title>
+      </bookmark>
+    </folder>
+  </folder>
   <folder id="11">
     <title>course</title>
     <bookmark href="https://www.udemy.com/" id="3">
@@ -902,18 +974,6 @@
       <title>Gumroad</title>
     </bookmark>
   </folder>
-  <folder id="37">
-    <title>JAVA设计模式</title>
-    <bookmark href="https://blog.csdn.net/haiyan1989/article/details/148904615" id="432">
-      <title>Java 23种设计模式超全详解_java设计模式-CSDN博客</title>
-    </bookmark>
-    <bookmark href="https://www.bilibili.com/video/BV1tGqoBwEvg?spm_id_from=333.788.player.switch&amp;vd_source=d731492c6432906d6b8391f59356906e&amp;p=8" id="433">
-      <title>008-适配器模式_哔哩哔哩_bilibili</title>
-    </bookmark>
-  </folder>
-  <bookmark href="https://www.yuque.com/geren-t8lyq/ncgl94/nn41bs3n8svmgpbq?singleDoc#dJSlZ" id="12">
-    <title>SpringAi GA1.0.0入门到源码完整系列课[wgc2]</title>
-  </bookmark>
   <bookmark href="https://icons8.com/icons" id="30">
     <title>Icons</title>
   </bookmark>
@@ -922,45 +982,6 @@
   </bookmark>
   <bookmark href="https://jokerconf.com/en/archive/2024/" id="32">
     <title>Joker 2024 | 面向有经验开发者的 Java 会议 --- Joker 2024 | Java сonference for experienced developers</title>
-  </bookmark>
-  <bookmark href="https://www.youtube.com/watch?v=T75K_cbUYwE&amp;list=PLuNxlOYbv61g_ytin-wgkecfWDKVCEDmB&amp;index=3" id="33">
-    <title>(50) Spring Boot MicroServices Tutorial: Catalog Service Walking Skeleton Setup - YouTube</title>
-  </bookmark>
-  <folder id="459">
-    <title>cucumber</title>
-    <bookmark href="https://github.com/blumek/party-showcase" id="460">
-      <title>blumek/party-showcase: Modular Spring Boot implementation of the Party archetype - isolated aggregate modules, Spring Data JDBC, Postgres, Cucumber e2e</title>
-    </bookmark>
-    <bookmark href="https://github.com/sncf-connect-tech/hesperides" id="461">
-      <title>sncf-connect-tech/hesperides: Configuration management tool providing universal text file templating and properties editing through a REST API or a webapp (backend part)</title>
-    </bookmark>
-    <bookmark href="https://github.com/codzy-ds/cucumber-demo" id="462">
-      <title>codzy-ds/cucumber-demo: Demo with cucumber, JUnit5, spring-boot and mavenon multi-module project</title>
-    </bookmark>
-    <bookmark href="https://github.com/VAbismael/my-multi-module-project" id="463">
-      <title>VAbismael/my-multi-module-project: projeto multi modulo em spring e cucumber aplicando arquitetura Hexagonal</title>
-    </bookmark>
-  </folder>
-  <folder id="465">
-    <title>postgresql</title>
-    <bookmark href="https://www.postgresql.org/docs/18/index.html" id="466">
-      <title>PostgreSQL：文档</title>
-    </bookmark>
-  </folder>
-  <folder id="472">
-    <title>Spring</title>
-    <bookmark href="https://spring-academy.broadcom.com/courses" id="473">
-      <title>Courses - Spring Academy</title>
-    </bookmark>
-  </folder>
-  <bookmark href="https://blog.csdn.net/A_art_xiang/article/details/125525864" id="474">
-    <title>redisson使用全解——redisson官方文档+注释（上篇）-CSDN博客</title>
-  </bookmark>
-  <bookmark href="https://refactoringguru.cn/" id="475">
-    <title>代码重构和设计模式</title>
-  </bookmark>
-  <bookmark href="https://www.cnblogs.com/aquester/p/19791985" id="476">
-    <title>Harness Engineering 从零理解到动手实践 - 岚天逸见 - 博客园</title>
   </bookmark>
 </folder>
 <folder id="2">
