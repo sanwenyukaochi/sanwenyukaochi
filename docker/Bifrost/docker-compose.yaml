@@ -3,7 +3,7 @@ name: Bifrost
 services:
   Bifrost:
     container_name: Bifrost
-    image: maximhq/bifrost:v2.5.0
+    image: maximhq/bifrost:v2.5.1
     mem_limit: 256m
     environment:
       TZ: Asia/Shanghai
