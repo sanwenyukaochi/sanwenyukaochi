@@ -3,6 +3,7 @@ import com.diffplug.spotless.java.GoogleJavaFormatStep
 
 plugins {
     id("com.diffplug.spotless") version "8.12.0"
+    kotlin("jvm") version "2.4.21"
 }
 
 repositories {
